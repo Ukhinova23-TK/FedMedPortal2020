@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0583ff55ff524be0861e0766a351b5ed" Name="Diagram1">
+        <EntityTypeShape EntityType="MedFacSystemModel.Appointment" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedFacSystemModel.AppointmentDateVisit" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedFacSystemModel.Article" Width="1.5" PointX="8" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedFacSystemModel.CategoryArticle" Width="1.5" PointX="5.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedFacSystemModel.CategoryMedFac" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedFacSystemModel.City" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedFacSystemModel.CompositionOfDoctors" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedFacSystemModel.Doctor" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedFacSystemModel.DoctorSpeciality" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedFacSystemModel.MedicalFacility" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedFacSystemModel.Speciality" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedFacSystemModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="MedFacSystemModel.FK__Appointme__IDApp__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="MedFacSystemModel.FK__Appointme__IDDoc__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="MedFacSystemModel.FK__Appointme__IDMed__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="MedFacSystemModel.FK__Article__IDCateg__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="MedFacSystemModel.FK__MedicalFa__IDCat__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="MedFacSystemModel.FK__MedicalFa__IDCit__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="MedFacSystemModel.FK__Compositi__IDDoc__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="MedFacSystemModel.FK__Compositi__IDMed__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="MedFacSystemModel.FK__DoctorSpe__IDDoc__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="MedFacSystemModel.FK__DoctorSpe__IDSpe__48CFD27E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MedFacSystemModelContainer" CdmEntityContainer="MedFacSystemEntities">
+    <EntitySetMapping Name="Appointment">
+      <EntityTypeMapping TypeName="MedFacSystemModel.Appointment">
+        <MappingFragment StoreEntitySet="Appointment">
+          <ScalarProperty Name="IDAppointment" ColumnName="IDAppointment" />
+          <ScalarProperty Name="IDMedFac" ColumnName="IDMedFac" />
+          <ScalarProperty Name="IDDoctor" ColumnName="IDDoctor" />
+          <ScalarProperty Name="FamilyVisitor" ColumnName="FamilyVisitor" />
+          <ScalarProperty Name="NameVisitor" ColumnName="NameVisitor" />
+          <ScalarProperty Name="PatronymicVisitor" ColumnName="PatronymicVisitor" />
+          <ScalarProperty Name="DateBirthdayVisitor" ColumnName="DateBirthdayVisitor" />
+          <ScalarProperty Name="GenderVisitor" ColumnName="GenderVisitor" />
+          <ScalarProperty Name="Finish" ColumnName="Finish" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppointmentDateVisit">
+      <EntityTypeMapping TypeName="MedFacSystemModel.AppointmentDateVisit">
+        <MappingFragment StoreEntitySet="AppointmentDateVisit">
+          <ScalarProperty Name="IDAppointmentDateVisit" ColumnName="IDAppointmentDateVisit" />
+          <ScalarProperty Name="IDAppointment" ColumnName="IDAppointment" />
+          <ScalarProperty Name="DateTimeVisit" ColumnName="DateTimeVisit" />
+          <ScalarProperty Name="Approved" ColumnName="Approved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="MedFacSystemModel.Article">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="IDArticle" ColumnName="IDArticle" />
+          <ScalarProperty Name="TitleArticle" ColumnName="TitleArticle" />
+          <ScalarProperty Name="DescriptionArticle" ColumnName="DescriptionArticle" />
+          <ScalarProperty Name="PsuedonymAuthor" ColumnName="PsuedonymAuthor" />
+          <ScalarProperty Name="IDCategoryArticle" ColumnName="IDCategoryArticle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryArticle">
+      <EntityTypeMapping TypeName="MedFacSystemModel.CategoryArticle">
+        <MappingFragment StoreEntitySet="CategoryArticle">
+          <ScalarProperty Name="IDCategoryArticle" ColumnName="IDCategoryArticle" />
+          <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryMedFac">
+      <EntityTypeMapping TypeName="MedFacSystemModel.CategoryMedFac">
+        <MappingFragment StoreEntitySet="CategoryMedFac">
+          <ScalarProperty Name="IDCategoryMedFac" ColumnName="IDCategoryMedFac" />
+          <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="MedFacSystemModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="IDCity" ColumnName="IDCity" />
+          <ScalarProperty Name="NameCity" ColumnName="NameCity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompositionOfDoctors">
+      <EntityTypeMapping TypeName="MedFacSystemModel.CompositionOfDoctors">
+        <MappingFragment StoreEntitySet="CompositionOfDoctors">
+          <ScalarProperty Name="IDMedFac" ColumnName="IDMedFac" />
+          <ScalarProperty Name="IDDoctor" ColumnName="IDDoctor" />
+          <ScalarProperty Name="Fired" ColumnName="Fired" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctor">
+      <EntityTypeMapping TypeName="MedFacSystemModel.Doctor">
+        <MappingFragment StoreEntitySet="Doctor">
+          <ScalarProperty Name="IDDoctor" ColumnName="IDDoctor" />
+          <ScalarProperty Name="FamilyDoctor" ColumnName="FamilyDoctor" />
+          <ScalarProperty Name="NameDoctor" ColumnName="NameDoctor" />
+          <ScalarProperty Name="PatronymicDoctor" ColumnName="PatronymicDoctor" />
+          <ScalarProperty Name="DateBirthdayDoctor" ColumnName="DateBirthdayDoctor" />
+          <ScalarProperty Name="GenderDoctor" ColumnName="GenderDoctor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoctorSpeciality">
+      <EntityTypeMapping TypeName="MedFacSystemModel.DoctorSpeciality">
+        <MappingFragment StoreEntitySet="DoctorSpeciality">
+          <ScalarProperty Name="IDDoctor" ColumnName="IDDoctor" />
+          <ScalarProperty Name="IDSpeciality" ColumnName="IDSpeciality" />
+          <ScalarProperty Name="CurrentSpeciality" ColumnName="CurrentSpeciality" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedicalFacility">
+      <EntityTypeMapping TypeName="MedFacSystemModel.MedicalFacility">
+        <MappingFragment StoreEntitySet="MedicalFacility">
+          <ScalarProperty Name="IDMedFac" ColumnName="IDMedFac" />
+          <ScalarProperty Name="NameMedFac" ColumnName="NameMedFac" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="IDCategoryMedFac" ColumnName="IDCategoryMedFac" />
+          <ScalarProperty Name="IDCity" ColumnName="IDCity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Speciality">
+      <EntityTypeMapping TypeName="MedFacSystemModel.Speciality">
+        <MappingFragment StoreEntitySet="Speciality">
+          <ScalarProperty Name="IDSpeciality" ColumnName="IDSpeciality" />
+          <ScalarProperty Name="NameSpeciality" ColumnName="NameSpeciality" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MedFacSystemModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

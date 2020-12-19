@@ -1,0 +1,283 @@
+﻿-- Создание базы данных
+
+USE master;
+GO
+CREATE DATABASE MedFacSystem;
+
+-- Создание таблиц
+
+USE MedFacSystem;
+GO
+CREATE TABLE CategoryMedFac
+(
+	IDCategoryMedFac BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	NameCategory NVARCHAR(200) NOT NULL,
+	CONSTRAINT AK_NameCategoryMedFac UNIQUE(NameCategory)
+);
+CREATE TABLE City
+(
+	IDCity BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	NameCity NVARCHAR(200) NOT NULL,
+	CONSTRAINT AK_NameCity UNIQUE(NameCity)
+);
+CREATE TABLE MedicalFacility
+(
+	IDMedFac BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	NameMedFac NVARCHAR(500) NOT NULL,
+	Street NVARCHAR(200) NOT NULL,
+	Building NVARCHAR(10),
+	IDCategoryMedFac BIGINT NOT NULL FOREIGN KEY REFERENCES CategoryMedFac(IDCategoryMedFac),
+	IDCity BIGINT NOT NULL FOREIGN KEY REFERENCES City(IDCity),
+	CONSTRAINT AK_MedicalFacility UNIQUE(NameMedFac, IDCity),
+);
+CREATE TABLE Speciality
+(
+	IDSpeciality BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	NameSpeciality NVARCHAR(200) NOT NULL,
+	CONSTRAINT AK_NameSpeciality UNIQUE(NameSpeciality)
+);
+CREATE TABLE Doctor
+(
+	IDDoctor BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	FamilyDoctor NVARCHAR(200) NOT NULL,
+	NameDoctor NVARCHAR(200) NOT NULL,
+	PatronymicDoctor NVARCHAR(200),
+	DateBirthdayDoctor DATE,
+	GenderDoctor BIT NOT NULL CONSTRAINT DF_GenderDoctor DEFAULT 1,
+	CONSTRAINT AK_FIODoctor UNIQUE(FamilyDoctor, NameDoctor, PatronymicDoctor),
+);
+CREATE TABLE DoctorSpeciality
+(
+	IDDoctor BIGINT NOT NULL FOREIGN KEY REFERENCES Doctor(IDDoctor),
+	IDSpeciality BIGINT NOT NULL FOREIGN KEY REFERENCES Speciality(IDSpeciality),
+	CurrentSpeciality BIT NOT NULL CONSTRAINT DF_Current DEFAULT 1,
+	PRIMARY KEY(IDDoctor, IDSpeciality),
+);
+CREATE TABLE Appointment
+(
+	IDAppointment BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	IDMedFac BIGINT NOT NULL FOREIGN KEY REFERENCES MedicalFacility(IDMedFac),
+	IDDoctor BIGINT NOT NULL FOREIGN KEY REFERENCES Doctor(IDDoctor),
+	FamilyVisitor NVARCHAR(200) NOT NULL,
+	NameVisitor NVARCHAR(200) NOT NULL,
+	PatronymicVisitor NVARCHAR(200),
+	DateBirthdayVisitor DATE,
+	GenderVisitor BIT NOT NULL CONSTRAINT DF_GenderVisitor DEFAULT 1,
+	Finish BIT NOT NULL CONSTRAINT DF_Finish DEFAULT 0
+);
+CREATE TABLE AppointmentDateVisit
+(
+	IDAppointmentDateVisit BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	IDAppointment BIGINT NOT NULL,
+	DateTimeVisit DATETIME NOT NULL,
+	Approved BIT NOT NULL CONSTRAINT DF_Approved DEFAULT 0,
+	CONSTRAINT AK_AppointmentDateVisit UNIQUE(IDAppointment, DateTimeVisit),
+);
+CREATE TABLE CompositionOfDoctors
+(
+	IDMedFac BIGINT NOT NULL FOREIGN KEY REFERENCES MedicalFacility(IDMedFac),
+	IDDoctor BIGINT NOT NULL FOREIGN KEY REFERENCES Doctor(IDDoctor),
+	Fired BIT NOT NULL CONSTRAINT DF_Fired DEFAULT 0
+	PRIMARY KEY(IDMedFac, IDDoctor)
+);
+CREATE TABLE CategoryArticle
+(
+	IDCategoryArticle BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	NameCategory NVARCHAR(200) NOT NULL,
+	CONSTRAINT AK_NameCategoryArticle UNIQUE(NameCategory)
+);
+CREATE TABLE Article
+(
+	IDArticle BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	TitleArticle NVARCHAR(200) NOT NULL,
+	DescriptionArticle NVARCHAR(MAX) NOT NULL,
+	PsuedonymAuthor NVARCHAR(100) NOT NULL,
+	IDCategoryArticle BIGINT NOT NULL FOREIGN KEY REFERENCES CategoryArticle(IDCategoryArticle),
+	CONSTRAINT AK_TitleArticle UNIQUE(TitleArticle)
+)
+
+-- Создание триггеров удаления
+
+USE MedFacSystem;
+GO
+CREATE TRIGGER TR_DeleteCity
+ON City
+INSTEAD OF DELETE
+AS
+BEGIN
+	DELETE 
+	FROM MedicalFacility
+	WHERE IDCity = 
+	(
+		SELECT IDCity
+		FROM deleted
+	)
+	DELETE
+	FROM City
+	WHERE IDCity = 
+	(
+		SELECT IDCity
+		FROM deleted
+	)
+END
+GO
+CREATE TRIGGER TR_DeleteCategoryMedFac
+ON CategoryMedFac
+INSTEAD OF DELETE
+AS
+BEGIN
+	DELETE 
+	FROM MedicalFacility
+	WHERE IDCategoryMedFac = 
+	(
+		SELECT IDCategoryMedFac
+		FROM deleted
+	)
+	DELETE
+	FROM CategoryMedFac
+	WHERE IDCategoryMedFac = 
+	(
+		SELECT IDCategoryMedFac
+		FROM deleted
+	)
+END
+GO
+CREATE TRIGGER TR_DeleteCategoryArticle
+ON CategoryArticle
+INSTEAD OF DELETE
+AS
+BEGIN
+	DELETE 
+	FROM Article
+	WHERE IDCategoryArticle = 
+	(
+		SELECT IDCategoryArticle
+		FROM deleted
+	)
+	DELETE
+	FROM CategoryArticle
+	WHERE IDCategoryArticle = 
+	(
+		SELECT IDCategoryArticle
+		FROM deleted
+	)
+END
+GO
+CREATE TRIGGER TR_DeleteSpeciality
+ON Speciality
+INSTEAD OF DELETE
+AS
+BEGIN
+	DELETE 
+	FROM DoctorSpeciality
+	WHERE IDSpeciality = 
+	(
+		SELECT IDSpeciality
+		FROM deleted
+	)
+	DELETE
+	FROM Speciality
+	WHERE IDSpeciality = 
+	(
+		SELECT IDSpeciality
+		FROM deleted
+	)
+END
+GO
+CREATE TRIGGER TR_DeleteAppointment
+ON Appointment
+INSTEAD OF DELETE
+AS
+BEGIN
+	DELETE 
+	FROM AppointmentDateVisit
+	WHERE IDAppointment = 
+	(
+		SELECT IDAppointment
+		FROM deleted
+	)
+	DELETE
+	FROM Appointment
+	WHERE IDAppointment = 
+	(
+		SELECT IDAppointment
+		FROM deleted
+	)
+END
+GO
+CREATE TRIGGER TR_DeleteDoctor
+ON Doctor
+INSTEAD OF DELETE
+AS
+BEGIN
+	DELETE 
+	FROM Appointment
+	WHERE IDDoctor = 
+	(
+		SELECT IDDoctor
+		FROM deleted
+	)
+	DELETE
+	FROM CompositionOfDoctors
+	WHERE IDDoctor = 
+	(
+		SELECT IDDoctor
+		FROM deleted
+	)
+	DELETE
+	FROM DoctorSpeciality
+	WHERE IDDoctor = 
+	(
+		SELECT IDDoctor
+		FROM deleted
+	)
+	DELETE
+	FROM Doctor
+	WHERE IDDoctor = 
+	(
+		SELECT IDDoctor
+		FROM deleted
+	)
+END
+GO
+CREATE TRIGGER TR_DeleteMedicalFacility
+ON MedicalFacility
+INSTEAD OF DELETE
+AS
+BEGIN
+	DELETE 
+	FROM Appointment
+	WHERE IDMedFac = 
+	(
+		SELECT IDMedFac
+		FROM deleted
+	)
+	DELETE
+	FROM CompositionOfDoctors
+	WHERE IDMedFac = 
+	(
+		SELECT IDMedFac
+		FROM deleted
+	)
+	DELETE
+	FROM MedicalFacility
+	WHERE IDMedFac = 
+	(
+		SELECT IDMedFac
+		FROM deleted
+	)
+END
+
+-- Создание 
+
+USE MedFacSystem;
+GO
+
+
+USE MedFacSystem;
+GO
+CREATE INDEX IN_Visitor 
+ON Appointment (FamilyVisitor, NameVisitor, PatronymicVisitor);
+GO
+CREATE INDEX IN_StreetMedFac
+ON MedicalFacility (Street);

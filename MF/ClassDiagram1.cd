@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MF.Action">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>3EYWLfpBvW1AAPybSZjmzhzOfYCdkDLBcbpCoJSUq+E=</HashCode>
+      <FileName>Action.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.Auth">
+    <Position X="6.75" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgASQAACBAAFAAAACAAAAiAAAAgAAABAAgAAAAAAA=</HashCode>
+      <FileName>Auth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.Main">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BxIEA/2CIOeCMCR8g1uRsQBGRRUO0EHFgFrRnCUYQ0A=</HashCode>
+      <FileName>Main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.MedFacConnect">
+    <Position X="2.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MedFacConnect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.MedFacSystemEntities">
+    <Position X="0.5" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiAAAAAAAABAAEAIAAAAAAAAcAAAAAQCAAAAEAACAAA=</HashCode>
+      <FileName>ModelMedFac.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.Appointment">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEAEAAAAAgAAAAAAAAAAEAAICAAAAUAAgAAAABAAAg=</HashCode>
+      <FileName>Appointment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.AppointmentDateVisit">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAASAAAAAAAAAAAAABABAA=</HashCode>
+      <FileName>AppointmentDateVisit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.Article">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAFAAAAAAAEAAABAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Article.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.CategoryArticle">
+    <Position X="0.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>CategoryArticle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.CategoryMedFac">
+    <Position X="0.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAACACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CategoryMedFac.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.City">
+    <Position X="0.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAQA=</HashCode>
+      <FileName>City.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.CompositionOfDoctors">
+    <Position X="0.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAEAAAAAAAAAAAAAAAAEAAAAAAAAQAAAAAAABAAAA=</HashCode>
+      <FileName>CompositionOfDoctors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.Doctor">
+    <Position X="0.5" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAEAAAAAAAAAAAAAAAAAAAQAAAAAACAAAAJAKAAEA=</HashCode>
+      <FileName>Doctor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.DoctorSpeciality">
+    <Position X="0.5" Y="24.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAEAAAAAAAAAAAAQAAAAAAAAAAAAQAAAAAAAACAAA=</HashCode>
+      <FileName>DoctorSpeciality.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.MedicalFacility">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAABACAABAAAAIAAAQAEAAQAAAAAAAAAIEAAAAAAA=</HashCode>
+      <FileName>MedicalFacility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.Speciality">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAgAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Speciality.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.sysdiagrams">
+    <Position X="0.5" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAIAAAAAAAAAAAAAAAQAAAFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>sysdiagrams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.Program">
+    <Position X="2.75" Y="10.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="MF.Program.MyApplicationContext" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Program.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.Properties.Resources">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MF.Properties.Settings">
+    <Position X="2.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

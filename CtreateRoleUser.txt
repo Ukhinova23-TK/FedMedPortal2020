@@ -1,0 +1,169 @@
+﻿-- Создание ролей
+
+USE MedFacSystem;
+GO
+CREATE ROLE AdminSystem;
+CREATE ROLE RepresentativeMedFac;
+CREATE ROLE Visitor;
+
+-- Создание логинов, пользователей
+
+USE MedFacSystem;
+GO
+CREATE LOGIN ADM WITH PASSWORD = '123';
+CREATE LOGIN REP WITH PASSWORD = '456';
+CREATE LOGIN VIS WITH PASSWORD = '789';
+GO
+CREATE USER user1 FOR LOGIN ADM;
+CREATE USER user2 FOR LOGIN REP;
+CREATE USER user3 FOR LOGIN VIS;
+GO
+ALTER ROLE ADM ADD MEMBER user1;
+ALTER ROLE REP ADD MEMBER user2;
+ALTER ROLE VIS ADD MEMBER user3;
+
+-- Присваивание прав
+
+USE MedFacSystem;
+GO
+GRANT SELECT, UPDATE, INSERT
+ON Article
+TO AdminSystem, RepresentativeMedFac;
+GO
+GRANT SELECT, UPDATE, INSERT
+ON CategoryArticle
+TO AdminSystem, RepresentativeMedFac;
+GO
+GRANT SELECT, UPDATE, INSERT
+ON CategoryMedFac
+TO AdminSystem, RepresentativeMedFac;
+GO
+GRANT SELECT, UPDATE, INSERT
+ON City
+TO AdminSystem, RepresentativeMedFac;
+GO
+GRANT SELECT, UPDATE, INSERT
+ON CompositionOfDoctors
+TO AdminSystem, RepresentativeMedFac;
+GO
+GRANT SELECT, UPDATE, INSERT
+ON Doctor
+TO AdminSystem, RepresentativeMedFac;
+GO
+GRANT SELECT, UPDATE, INSERT
+ON DoctorSpeciality
+TO AdminSystem, RepresentativeMedFac;
+GO
+GRANT SELECT, UPDATE, INSERT
+ON MedicalFacility
+TO AdminSystem, RepresentativeMedFac;
+GO
+GRANT SELECT, UPDATE, INSERT
+ON Speciality
+TO AdminSystem, RepresentativeMedFac;
+GO
+GRANT SELECT
+ON Appointment
+TO AdminSystem, RepresentativeMedFac;
+GO
+GRANT SELECT
+ON AppointmentDateVisit
+TO AdminSystem, RepresentativeMedFac;
+
+
+
+GO
+GRANT SELECT, DELETE, INSERT, UPDATE
+ON Appointment
+TO Visitor;
+GO
+GRANT SELECT, DELETE, INSERT
+ON AppointmentDateVisit 
+TO Visitor;
+GO
+GRANT UPDATE 
+ON AppointmentDateVisit (IDAppontmentDateVisit, IDAppointment, DateTimeVisit)
+TO Visitor;
+GO
+GRANT SELECT
+ON Article
+TO Visitor;
+GO
+GRANT SELECT
+ON CategoryArticle
+TO Visitor;
+GO
+GRANT SELECT
+ON CategoryMedFac
+TO Visitor;
+GO
+GRANT SELECT
+ON City
+TO Visitor;
+GO
+GRANT SELECT
+ON CompositionOfDoctors
+TO Visitor;
+GO
+GRANT SELECT
+ON Doctor
+TO Visitor;
+GO
+GRANT SELECT
+ON DoctorSpeciality
+TO Visitor;
+GO
+GRANT SELECT
+ON MedicalFacility
+TO Visitor;
+GO
+GRANT SELECT
+ON Speciality
+TO Visitor;
+
+
+
+GO
+GRANT DELETE
+ON Article
+TO AdminSystem;
+GO
+GRANT DELETE
+ON CategoryArticle
+TO AdminSystem;
+GO
+GRANT DELETE
+ON CategoryMedFac
+TO AdminSystem;
+GO
+GRANT DELETE
+ON City
+TO AdminSystem;
+GO
+GRANT DELETE
+ON CompositionOfDoctors
+TO AdminSystem;
+GO
+GRANT DELETE
+ON Doctor
+TO AdminSystem;
+GO
+GRANT DELETE
+ON DoctorSpeciality
+TO AdminSystem;
+GO
+GRANT DELETE
+ON MedicalFacility
+TO AdminSystem;
+GO
+GRANT DELETE
+ON Speciality
+TO AdminSystem;
+GO
+GRANT DELETE
+ON Appointment
+TO AdminSystem;
+GO
+GRANT DELETE
+ON AppointmentDateVisit
+TO AdminSystem;

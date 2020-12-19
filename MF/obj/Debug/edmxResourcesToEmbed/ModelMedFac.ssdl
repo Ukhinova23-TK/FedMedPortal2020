@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище MedFacSystemModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="IDAppointment" />
+    </Key>
+    <Property Name="IDAppointment" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDMedFac" Type="bigint" Nullable="false" />
+    <Property Name="IDDoctor" Type="bigint" Nullable="false" />
+    <Property Name="FamilyVisitor" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="NameVisitor" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PatronymicVisitor" Type="nvarchar" MaxLength="200" />
+    <Property Name="DateBirthdayVisitor" Type="date" />
+    <Property Name="GenderVisitor" Type="bit" Nullable="false" />
+    <Property Name="Finish" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AppointmentDateVisit">
+    <Key>
+      <PropertyRef Name="IDAppointmentDateVisit" />
+    </Key>
+    <Property Name="IDAppointmentDateVisit" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDAppointment" Type="bigint" Nullable="false" />
+    <Property Name="DateTimeVisit" Type="datetime" Nullable="false" />
+    <Property Name="Approved" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="IDArticle" />
+    </Key>
+    <Property Name="IDArticle" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleArticle" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DescriptionArticle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PsuedonymAuthor" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IDCategoryArticle" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryArticle">
+    <Key>
+      <PropertyRef Name="IDCategoryArticle" />
+    </Key>
+    <Property Name="IDCategoryArticle" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameCategory" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryMedFac">
+    <Key>
+      <PropertyRef Name="IDCategoryMedFac" />
+    </Key>
+    <Property Name="IDCategoryMedFac" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameCategory" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="IDCity" />
+    </Key>
+    <Property Name="IDCity" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameCity" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompositionOfDoctors">
+    <Key>
+      <PropertyRef Name="IDMedFac" />
+      <PropertyRef Name="IDDoctor" />
+    </Key>
+    <Property Name="IDMedFac" Type="bigint" Nullable="false" />
+    <Property Name="IDDoctor" Type="bigint" Nullable="false" />
+    <Property Name="Fired" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="IDDoctor" />
+    </Key>
+    <Property Name="IDDoctor" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FamilyDoctor" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="NameDoctor" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PatronymicDoctor" Type="nvarchar" MaxLength="200" />
+    <Property Name="DateBirthdayDoctor" Type="date" />
+    <Property Name="GenderDoctor" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DoctorSpeciality">
+    <Key>
+      <PropertyRef Name="IDDoctor" />
+      <PropertyRef Name="IDSpeciality" />
+    </Key>
+    <Property Name="IDDoctor" Type="bigint" Nullable="false" />
+    <Property Name="IDSpeciality" Type="bigint" Nullable="false" />
+    <Property Name="CurrentSpeciality" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MedicalFacility">
+    <Key>
+      <PropertyRef Name="IDMedFac" />
+    </Key>
+    <Property Name="IDMedFac" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameMedFac" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Street" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Building" Type="nvarchar" MaxLength="10" />
+    <Property Name="IDCategoryMedFac" Type="bigint" Nullable="false" />
+    <Property Name="IDCity" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Speciality">
+    <Key>
+      <PropertyRef Name="IDSpeciality" />
+    </Key>
+    <Property Name="IDSpeciality" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameSpeciality" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Appointme__IDApp__534D60F1">
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="1" />
+    <End Role="AppointmentDateVisit" Type="Self.AppointmentDateVisit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointment">
+        <PropertyRef Name="IDAppointment" />
+      </Principal>
+      <Dependent Role="AppointmentDateVisit">
+        <PropertyRef Name="IDAppointment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__IDDoc__4D94879B">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="IDDoctor" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="IDDoctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__IDMed__4CA06362">
+    <End Role="MedicalFacility" Type="Self.MedicalFacility" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MedicalFacility">
+        <PropertyRef Name="IDMedFac" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="IDMedFac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Article__IDCateg__5FB337D6">
+    <End Role="CategoryArticle" Type="Self.CategoryArticle" Multiplicity="1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryArticle">
+        <PropertyRef Name="IDCategoryArticle" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="IDCategoryArticle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Compositi__IDDoc__5812160E">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="CompositionOfDoctors" Type="Self.CompositionOfDoctors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="IDDoctor" />
+      </Principal>
+      <Dependent Role="CompositionOfDoctors">
+        <PropertyRef Name="IDDoctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Compositi__IDMed__571DF1D5">
+    <End Role="MedicalFacility" Type="Self.MedicalFacility" Multiplicity="1" />
+    <End Role="CompositionOfDoctors" Type="Self.CompositionOfDoctors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MedicalFacility">
+        <PropertyRef Name="IDMedFac" />
+      </Principal>
+      <Dependent Role="CompositionOfDoctors">
+        <PropertyRef Name="IDMedFac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DoctorSpe__IDDoc__47DBAE45">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="DoctorSpeciality" Type="Self.DoctorSpeciality" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="IDDoctor" />
+      </Principal>
+      <Dependent Role="DoctorSpeciality">
+        <PropertyRef Name="IDDoctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DoctorSpe__IDSpe__48CFD27E">
+    <End Role="Speciality" Type="Self.Speciality" Multiplicity="1" />
+    <End Role="DoctorSpeciality" Type="Self.DoctorSpeciality" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Speciality">
+        <PropertyRef Name="IDSpeciality" />
+      </Principal>
+      <Dependent Role="DoctorSpeciality">
+        <PropertyRef Name="IDSpeciality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MedicalFa__IDCat__3D5E1FD2">
+    <End Role="CategoryMedFac" Type="Self.CategoryMedFac" Multiplicity="1" />
+    <End Role="MedicalFacility" Type="Self.MedicalFacility" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryMedFac">
+        <PropertyRef Name="IDCategoryMedFac" />
+      </Principal>
+      <Dependent Role="MedicalFacility">
+        <PropertyRef Name="IDCategoryMedFac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MedicalFa__IDCit__3E52440B">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="MedicalFacility" Type="Self.MedicalFacility" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="IDCity" />
+      </Principal>
+      <Dependent Role="MedicalFacility">
+        <PropertyRef Name="IDCity" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище MedFacSystemModelContainer">
+    <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppointmentDateVisit" EntityType="Self.AppointmentDateVisit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoryArticle" EntityType="Self.CategoryArticle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoryMedFac" EntityType="Self.CategoryMedFac" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompositionOfDoctors" EntityType="Self.CompositionOfDoctors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoctorSpeciality" EntityType="Self.DoctorSpeciality" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MedicalFacility" EntityType="Self.MedicalFacility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Speciality" EntityType="Self.Speciality" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Appointme__IDApp__534D60F1" Association="Self.FK__Appointme__IDApp__534D60F1">
+      <End Role="Appointment" EntitySet="Appointment" />
+      <End Role="AppointmentDateVisit" EntitySet="AppointmentDateVisit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__IDDoc__4D94879B" Association="Self.FK__Appointme__IDDoc__4D94879B">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__IDMed__4CA06362" Association="Self.FK__Appointme__IDMed__4CA06362">
+      <End Role="MedicalFacility" EntitySet="MedicalFacility" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Article__IDCateg__5FB337D6" Association="Self.FK__Article__IDCateg__5FB337D6">
+      <End Role="CategoryArticle" EntitySet="CategoryArticle" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Compositi__IDDoc__5812160E" Association="Self.FK__Compositi__IDDoc__5812160E">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="CompositionOfDoctors" EntitySet="CompositionOfDoctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Compositi__IDMed__571DF1D5" Association="Self.FK__Compositi__IDMed__571DF1D5">
+      <End Role="MedicalFacility" EntitySet="MedicalFacility" />
+      <End Role="CompositionOfDoctors" EntitySet="CompositionOfDoctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DoctorSpe__IDDoc__47DBAE45" Association="Self.FK__DoctorSpe__IDDoc__47DBAE45">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="DoctorSpeciality" EntitySet="DoctorSpeciality" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DoctorSpe__IDSpe__48CFD27E" Association="Self.FK__DoctorSpe__IDSpe__48CFD27E">
+      <End Role="Speciality" EntitySet="Speciality" />
+      <End Role="DoctorSpeciality" EntitySet="DoctorSpeciality" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MedicalFa__IDCat__3D5E1FD2" Association="Self.FK__MedicalFa__IDCat__3D5E1FD2">
+      <End Role="CategoryMedFac" EntitySet="CategoryMedFac" />
+      <End Role="MedicalFacility" EntitySet="MedicalFacility" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MedicalFa__IDCit__3E52440B" Association="Self.FK__MedicalFa__IDCit__3E52440B">
+      <End Role="City" EntitySet="City" />
+      <End Role="MedicalFacility" EntitySet="MedicalFacility" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
